@@ -7,6 +7,7 @@ export const SessionProvider = ({children }: {children: React.ReactNode}) => {
     return (
         <SProvider>
             <NavBar/>
+            <div className=" mt-16 max-sm:mt-0"></div>
             {children}
         </SProvider>
     );

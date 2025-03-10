@@ -78,7 +78,7 @@ export default function AuthPage() {
         .then((response) => {
             console.log(response);
             setMessage("✅ Login successful!");
-            router.push('/');
+            window.location.href = '/';
         })
         .catch((error: any) => {
             showMessage(error.response?.data?.message || "Login failed");

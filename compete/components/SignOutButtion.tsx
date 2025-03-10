@@ -1,13 +1,14 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { TimerIcon } from "lucide-react";
+import { LogOutIcon, TimerIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function SignOutButton() {
   const session = useSession();
   const router = useRouter();
-  console.log(session.data?.expires , Date.now() );
+  console.log(session);
 
   const [exp,setExp] = useState<string>("");
 
@@ -45,14 +46,23 @@ export default function SignOutButton() {
   }
 
   return (
-    <div
-      onClick={() => signOut()}
-      className="inline-flex items-center px-2 gap-2 py-1 border border-transparent 
-      text-sm  rounded-md text-black font-thin
-      focus:outline-none focus:ring-2 focus:ring-offset-2 bg-white "
-    >
-    <TimerIcon size={20} />
-    {exp}
+    <div className=" group w-fit">
+        <Link href={"/user/"+session.data.user.rollNumber}>
+        <div className="h-10 w-10 bg-amber-400 rounded-full overflow-hidden">
+            <img 
+                src={`https://iare-data.s3.ap-south-1.amazonaws.com/uploads/STUDENTS/${session.data.user.rollNumber}/${session.data.user.rollNumber}.jpg`} 
+                alt="profile"
+                width={40}
+                height={40}
+                className="object-cover"
+            />
+        </div>
+      </Link>
+      <div onClick={()=> signOut()} className=" hover:cursor-pointer select-none active:scale-75 scale-0 transition-all shadow-lg group-hover:scale-100 absolute gap-2 text-white items-center justify-center
+       rounded-b-lg rounded-l-lg flex text-sm top-14 right-10 px-3 py-1 bg-red-500">
+        Sign Out
+        <LogOutIcon  width={12}/>
+      </div>
     </div>
   );
 }

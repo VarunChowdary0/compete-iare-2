@@ -4,6 +4,14 @@ import { and, eq } from 'drizzle-orm';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
+declare module "next-auth" {
+    interface Session{
+        user: {
+            id: string;
+            rollNumber: string;
+        }
+    }
+}
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
@@ -54,7 +62,10 @@ const handler = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      session.user = token;
+      session.user = {
+        id: token.id as string,
+        rollNumber: token.rollNumber as string
+      };
       return session;
     },
   },
