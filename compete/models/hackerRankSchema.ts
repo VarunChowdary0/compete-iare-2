@@ -1,6 +1,23 @@
 import { sqliteTable,text,int } from "drizzle-orm/sqlite-core";
 
 
+// CREATE TABLE HackerRank(
+//     RollNumber VARCHAR(10) PRIMARY KEY,
+//     Username VARCHAR(255) UNIQUE,
+//     Name VARCHAR(255),
+//     oneStarBadge INT DEFAULT 0,        
+//     twoStarBadge INT DEFAULT 0,        
+//     threeStarBadge INT DEFAULT 0,        
+//     fourStarBadge INT DEFAULT 0,        
+//     fiveStarBadge INT DEFAULT 0,        
+//     AdvancedCertifications INT DEFAULT 0,        
+//     IntermediateCertifications INT DEFAULT 0,        
+//     BasicCertifications INT DEFAULT 0,        
+// FOREIGN KEY (RollNumber) REFERENCES Student_Data(RollNumber) ON DELETE CASCADE   
+// )
+
+
+
 export interface HackerRankSchema {
     RollNumber: string;
     Username: string;
@@ -30,18 +47,3 @@ export const HackerRank = sqliteTable("HackerRank", {
     BasicCertifications: int('BasicCertifications').default(0),
 
 });
-
-// CREATE TABLE HackerRank(
-//     RollNumber VARCHAR(10) PRIMARY KEY,
-//     Username VARCHAR(255) UNIQUE,
-//     Name VARCHAR(255),
-//     oneStarBadge INT DEFAULT 0,        
-//     twoStarBadge INT DEFAULT 0,        
-//     threeStarBadge INT DEFAULT 0,        
-//     fourStarBadge INT DEFAULT 0,        
-//     fiveStarBadge INT DEFAULT 0,        
-//     AdvancedCertifications INT DEFAULT 0,        
-//     IntermediateCertifications INT DEFAULT 0,        
-//     BasicCertifications INT DEFAULT 0,        
-// FOREIGN KEY (RollNumber) REFERENCES Student_Data(RollNumber) ON DELETE CASCADE   
-// )

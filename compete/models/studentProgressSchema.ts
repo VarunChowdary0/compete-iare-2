@@ -31,8 +31,5 @@ export const StudentProgress = sqliteTable(
     CodeChef: int("CodeChef"),
     HackerRank: int("HackerRank"),
     GeekForGeeks: int("GeekForGeeks"),
-  },
-  (table) => ({
-    pk: primaryKey(table.ProgressDate, table.RollNumber),
-  })
+  }
 );

@@ -1,5 +1,17 @@
 import { sqliteTable,text,int } from "drizzle-orm/sqlite-core";
 
+
+// CREATE TABLE LeetCode(
+//     RollNumber VARCHAR(10) PRIMARY KEY,
+//     Username VARCHAR(255) UNIQUE,
+//     Name VARCHAR(255),
+//     EasyProblemSolved INT DEFAULT 0,
+//     MediumProblemSolved INT DEFAULT 0,
+//     HardProblemSolved INT DEFAULT 0,
+// FOREIGN KEY (RollNumber) REFERENCES Student_Data(RollNumber) ON DELETE CASCADE\n    
+// )
+
+
 export interface LeetcodeSchema {
     RollNumber: string;
     Username: string;
@@ -18,12 +30,4 @@ export const Leetcode = sqliteTable("Leetcode", {
     HardProblemSolved: int('HardProblemSolved').default(0),
 });
 
-// CREATE TABLE LeetCode(
-//     RollNumber VARCHAR(10) PRIMARY KEY,
-//     Username VARCHAR(255) UNIQUE,
-//     Name VARCHAR(255),
-//     EasyProblemSolved INT DEFAULT 0,
-//     MediumProblemSolved INT DEFAULT 0,
-//     HardProblemSolved INT DEFAULT 0,
-// FOREIGN KEY (RollNumber) REFERENCES Student_Data(RollNumber) ON DELETE CASCADE\n    
-// )
+
